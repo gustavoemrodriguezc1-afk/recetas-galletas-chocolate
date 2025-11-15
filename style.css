@@ -304,3 +304,52 @@ main {
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+
+/* --- FIX RÁPIDO: navegación scrollable en móvil --- */
+/* Mantener logo sin romper el layout */
+.logo h2 {
+  white-space: nowrap; /* evita que el texto del logo salte a varias líneas */
+  font-size: clamp(1rem, 3.5vw, 1.25rem);
+  margin-right: 1rem;
+}
+
+/* Nav general: permitir que los enlaces no se colapsen */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Links: permitir scroll horizontal en pantallas pequeñas */
+.nav-links {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  align-items: center;
+}
+
+/* En pantallas pequeñas, permitir scroll horizontal para evitar wrapping */
+@media (max-width: 768px) {
+  .nav {
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-links {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    white-space: nowrap; /* evita que cada link se ajuste en varias líneas */
+    scrollbar-width: thin; /* Firefox */
+  }
+
+  /* Opcional: estilito para que se vea que se puede deslizar */
+  .nav-links::-webkit-scrollbar { height: 6px; }
+  .nav-links::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+  
+  /* Reducir tamaño de fuente ligeramente para que quepan mejor */
+  .nav-links a {
+    font-size: 0.95rem;
+    padding: 0.35rem 0.25rem;
+    display: inline-block;
+  }
+}
