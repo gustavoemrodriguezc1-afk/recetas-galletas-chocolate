@@ -468,7 +468,7 @@ main {
   }
 }
 
-/* utilidades de accesibilidad (si no las tienes ya) */
+/* utilidades de accesibilidad */
 .sr-only {
   position: absolute !important;
   width: 1px;
